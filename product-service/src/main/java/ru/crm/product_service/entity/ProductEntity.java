@@ -1,4 +1,4 @@
-package ru.crm.entity;
+package ru.crm.product_service.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,14 +1,14 @@
-package ru.crm.service.impl;
+package ru.crm.product_service.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.crm.dto.ProductDto;
-import ru.crm.entity.ProductEntity;
-import ru.crm.mapper.ProductMapper;
-import ru.crm.repository.ProductRepository;
-import ru.crm.service.ProductService;
+import ru.crm.product_service.dto.ProductDto;
+import ru.crm.product_service.entity.ProductEntity;
+import ru.crm.product_service.mapper.ProductMapper;
+import ru.crm.product_service.repository.ProductRepository;
+import ru.crm.product_service.service.ProductService;
 
 @Service
 @RequiredArgsConstructor

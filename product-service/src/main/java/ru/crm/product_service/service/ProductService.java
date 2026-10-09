@@ -1,6 +1,6 @@
-package ru.crm.service;
+package ru.crm.product_service.service;
 
-import ru.crm.dto.ProductDto;
+import ru.crm.product_service.dto.ProductDto;
 
 public interface ProductService {
 

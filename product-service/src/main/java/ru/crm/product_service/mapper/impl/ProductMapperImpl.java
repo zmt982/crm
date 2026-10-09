@@ -1,9 +1,9 @@
-package ru.crm.mapper.impl;
+package ru.crm.product_service.mapper.impl;
 
 import org.springframework.stereotype.Component;
-import ru.crm.dto.ProductDto;
-import ru.crm.entity.ProductEntity;
-import ru.crm.mapper.ProductMapper;
+import ru.crm.product_service.dto.ProductDto;
+import ru.crm.product_service.entity.ProductEntity;
+import ru.crm.product_service.mapper.ProductMapper;
 
 @Component
 public class ProductMapperImpl implements ProductMapper {

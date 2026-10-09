@@ -1,4 +1,4 @@
-package ru.crm.controller;
+package ru.crm.product_service.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.crm.dto.ProductDto;
-import ru.crm.service.ProductService;
+import ru.crm.product_service.dto.ProductDto;
+import ru.crm.product_service.service.ProductService;
 
 @RestController
 @RequestMapping("/products")
