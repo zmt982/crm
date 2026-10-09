@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: product-service
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5433/product-service-db
+    username: test
+    password: test

@@ -1,9 +1,11 @@
 package ru.crm.mapper.impl;
 
+import org.springframework.stereotype.Component;
 import ru.crm.dto.ProductDto;
 import ru.crm.entity.ProductEntity;
 import ru.crm.mapper.ProductMapper;
 
+@Component
 public class ProductMapperImpl implements ProductMapper {
     @Override
     public ProductDto toDto(ProductEntity productEntity) {
