@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 @Builder
 @Table(name = "outers")
 public class OuterEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,7 +37,7 @@ public class OuterEntity {
     @Size(max = 50)
     private String name;
 
-    @Column
+    @Column(precision = 10, scale = 2)
     @NotNull
     @Positive
     private BigDecimal price;

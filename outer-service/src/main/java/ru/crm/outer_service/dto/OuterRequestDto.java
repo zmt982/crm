@@ -8,19 +8,20 @@ import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
-public class OuterRequestDto {
+public record OuterRequestDto (
 
     @NotBlank
     @Size(max = 50)
-    String name;
+    String name,
 
     @NotNull
     @Positive
-    BigDecimal price;
+    BigDecimal price,
 
     @NotNull
     @PositiveOrZero
-    Integer quantity;
+    Integer quantity,
 
-    String description;
-}
+    String description
+
+) {}
