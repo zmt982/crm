@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+kafka:
+  topic:
+    partner-events: partner-events
+
+spring:
+  application:
+    name: outer-service
+  liquibase:
+    change-log: classpath:db/changelog/changelog-outer.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5434/outer-service-db
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: outer-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: ru.crm.common_lib.dto.event.SendToPartnerEvent
