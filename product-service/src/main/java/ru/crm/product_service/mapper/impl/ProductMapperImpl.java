@@ -12,6 +12,7 @@ public class ProductMapperImpl implements ProductMapper {
         if (productEntity == null) {
             return null;
         }
+
         return new ProductDto(
                 productEntity.getId(),
                 productEntity.getName(),
