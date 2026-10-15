@@ -1,0 +1,17 @@
+package ru.crm.product_service.exception;
+
+public class PartnerUnavailableException extends RuntimeException {
+
+    public PartnerUnavailableException() {
+        super();
+    }
+
+    public PartnerUnavailableException(String message) {
+        super(message);
+    }
+
+    public PartnerUnavailableException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+}

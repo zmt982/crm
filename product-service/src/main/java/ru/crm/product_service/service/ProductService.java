@@ -1,6 +1,8 @@
 package ru.crm.product_service.service;
 
 import ru.crm.product_service.dto.ProductDto;
+import ru.crm.product_service.dto.SendToPartnerRequestDto;
+import ru.crm.product_service.dto.SendToPartnerResponseDto;
 
 public interface ProductService {
 
@@ -11,5 +13,7 @@ public interface ProductService {
     ProductDto getById(Long id);
 
     void deleteById(Long id);
+
+    SendToPartnerResponseDto sendToPartner(Long id, SendToPartnerRequestDto requestDto);
 
 }

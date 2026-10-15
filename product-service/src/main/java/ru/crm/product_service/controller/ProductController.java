@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.crm.product_service.dto.ProductDto;
+import ru.crm.product_service.dto.SendToPartnerRequestDto;
+import ru.crm.product_service.dto.SendToPartnerResponseDto;
 import ru.crm.product_service.service.ProductService;
 
 @RestController
@@ -44,6 +46,13 @@ public class ProductController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         productService.deleteById(id);
+    }
+
+    @PostMapping("/{id}/send-to-partner")
+    public ResponseEntity<SendToPartnerResponseDto> sendToPartner(@PathVariable Long id,
+                                                                  @Valid @RequestBody SendToPartnerRequestDto requestDto) {
+        SendToPartnerResponseDto sendToPartnerResponseDto = productService.sendToPartner(id, requestDto);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(sendToPartnerResponseDto);
     }
 
 }

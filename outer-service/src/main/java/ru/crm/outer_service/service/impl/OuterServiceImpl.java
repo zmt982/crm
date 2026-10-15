@@ -14,6 +14,7 @@ import ru.crm.outer_service.service.OuterService;
 @Service
 @RequiredArgsConstructor
 public class OuterServiceImpl implements OuterService {
+
     private final OuterRepository outerRepository;
     private final OuterMapper outerMapper;
     private final String OUTER_ENTITY_NOT_FOUND = "OuterEntity not found: ";

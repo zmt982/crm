@@ -47,8 +47,4 @@ public class OuterController {
         outerService.deleteById(id);
     }
 
-    public sendToPartner(@RequestBody OuterRequestDto) {
-
-    }
-
 }
