@@ -5,6 +5,7 @@ import ru.crm.outer_service.dto.OuterRequestDto;
 import ru.crm.outer_service.dto.OuterResponseDto;
 import ru.crm.outer_service.entity.OuterEntity;
 import ru.crm.outer_service.mapper.OuterMapper;
+import ru.crm.product_service.dto.event.SendToPartnerEvent;
 
 @Component
 public class OuterMapperImpl implements OuterMapper {
@@ -33,6 +34,21 @@ public class OuterMapperImpl implements OuterMapper {
                 .price(outerRequestDto.price())
                 .quantity(outerRequestDto.quantity())
                 .description(outerRequestDto.description())
+                .build();
+    }
+
+    @Override
+    public OuterEntity toEntity(SendToPartnerEvent sentEvent) {
+        if (sentEvent == null) {
+            return null;
+        }
+
+        return OuterEntity.builder()
+                .id(sentEvent.productId())
+                .name(sentEvent.name())
+                .price(sentEvent.price())
+                .quantity(sentEvent.quantity())
+                .description(sentEvent.description())
                 .build();
     }
 

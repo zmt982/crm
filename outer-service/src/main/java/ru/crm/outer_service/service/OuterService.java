@@ -2,6 +2,7 @@ package ru.crm.outer_service.service;
 
 import ru.crm.outer_service.dto.OuterRequestDto;
 import ru.crm.outer_service.dto.OuterResponseDto;
+import ru.crm.product_service.dto.event.SendToPartnerEvent;
 
 public interface OuterService {
 
@@ -12,5 +13,7 @@ public interface OuterService {
     OuterResponseDto getById(Long id);
 
     void deleteById(Long id);
+
+    OuterResponseDto handle(SendToPartnerEvent event);
 
 }

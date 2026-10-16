@@ -27,10 +27,14 @@ import java.util.UUID;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+
     private final ProductMapper productMapper;
+
     private final KafkaTemplate<String, SendToPartnerEvent> kafkaTemplate;
+
     @Value("${kafka.topic.partner-events}")
     private String partnerTopic;
+
     private static final String PRODUCT_NOT_FOUND = "Product not found: ";
 
     @Override
@@ -83,15 +87,14 @@ public class ProductServiceImpl implements ProductService {
         productEntity.setQuantity(remainingQuantity);
         UUID eventId = UUID.randomUUID();
         Instant sentAt = Instant.now();
-        SendToPartnerEvent event = SendToPartnerEvent.builder()
-                .eventId(eventId)
-                .productId(productEntity.getId())
-                .name(productEntity.getName())
-                .price(productEntity.getPrice())
-                .quantity(requestDto.quantity())
-                .description(productEntity.getDescription())
-                .sentAt(sentAt)
-                .build();
+        SendToPartnerEvent event = new SendToPartnerEvent(
+                eventId,
+                productEntity.getId(),
+                productEntity.getName(),
+                productEntity.getPrice(),
+                requestDto.quantity(),
+                productEntity.getDescription(),
+                sentAt);
 
         try {
             kafkaTemplate.send(partnerTopic, productEntity.getId().toString(), event)
@@ -100,14 +103,13 @@ public class ProductServiceImpl implements ProductService {
             throw new PartnerUnavailableException("Kafka unavailable", e);
         }
 
-        return SendToPartnerResponseDto.builder()
-                .id(productEntity.getId())
-                .sentQuantity(requestDto.quantity())
-                .remainingQuantity(remainingQuantity)
-                .status(Status.SENT)
-                .eventId(eventId)
-                .sentAt(sentAt)
-                .build();
+        return new SendToPartnerResponseDto(
+                productEntity.getId(),
+                requestDto.quantity(),
+                remainingQuantity,
+                Status.SENT,
+                eventId,
+                sentAt);
     }
 
 }

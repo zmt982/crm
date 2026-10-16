@@ -3,33 +3,34 @@ package ru.crm.product_service.dto.event;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Builder;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-@Builder
-public class SendToPartnerEvent {
+public record SendToPartnerEvent(
 
-    @NotBlank
-    UUID eventId;
+        @NotNull
+        UUID eventId,
 
-    @NotBlank
-    Long productId;
+        @NotNull
+        Long productId,
 
-    @NotBlank
-    String name;
+        @NotBlank
+        @Size(max = 50)
+        String name,
 
-    @NotNull
-    @Positive
-    BigDecimal price;
+        @NotNull
+        @Positive BigDecimal price,
 
-    @NotBlank
-    @Positive
-    Integer quantity;
+        @NotNull
+        @Positive
+        Integer quantity,
 
-    String description;
+        String description,
 
-    Instant sentAt;
-}
+        @NotNull
+        Instant sentAt
+
+) {}

@@ -49,4 +49,5 @@ public class OuterEntity {
 
     @Column
     private String description;
+
 }
