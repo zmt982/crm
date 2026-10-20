@@ -78,8 +78,9 @@ public class OuterServiceImpl implements OuterService {
                 .orElseGet(() -> outerMapper.toEntity(sentEvent));
 
         Integer receivedQuantity = sentEvent.quantity();
-        Integer existQuantity = outerEntity.getQuantity();
+        Integer existQuantity = outerEntity.getQuantity() != null ? outerEntity.getQuantity() : 0;
         outerEntity.setQuantity(existQuantity + receivedQuantity);
+        outerRepository.save(outerEntity);
 
         ProcessedEvent processedEvent = ProcessedEvent.builder()
                 .eventId(sentEvent.eventId())
