@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public record ProductDto(
+
         Long id,
 
         @NotBlank
@@ -22,4 +23,5 @@ public record ProductDto(
         Integer quantity,
 
         String description
+
 ) {}

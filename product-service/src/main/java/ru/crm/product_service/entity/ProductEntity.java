@@ -27,13 +27,14 @@ import java.math.BigDecimal;
 @Builder
 @Table(name = "products")
 public class ProductEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
     @NotBlank
-    @Size(max = 50)
+    @Size(max = 100)
     private String name;
 
     @Column(precision = 10, scale = 2)

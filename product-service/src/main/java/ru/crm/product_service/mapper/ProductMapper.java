@@ -1,11 +1,36 @@
 package ru.crm.product_service.mapper;
 
+import org.springframework.stereotype.Component;
 import ru.crm.product_service.dto.ProductDto;
 import ru.crm.product_service.entity.ProductEntity;
 
-public interface ProductMapper {
+@Component
+public class ProductMapper {
 
-    ProductDto toDto(ProductEntity productEntity);
+    public ProductDto toDto(ProductEntity productEntity) {
+        if (productEntity == null) {
+            return null;
+        }
 
-    ProductEntity toEntity(ProductDto productDto);
+        return new ProductDto(
+                productEntity.getId(),
+                productEntity.getName(),
+                productEntity.getPrice(),
+                productEntity.getQuantity(),
+                productEntity.getDescription());
+    }
+
+    public ProductEntity toEntity(ProductDto productDto) {
+        if (productDto == null) {
+            return null;
+        }
+
+        return new ProductEntity(
+                productDto.id(),
+                productDto.name(),
+                productDto.price(),
+                productDto.quantity(),
+                productDto.description()
+        );
+    }
 }

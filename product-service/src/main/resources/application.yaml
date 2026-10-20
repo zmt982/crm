@@ -1,5 +1,10 @@
 server:
   port: 8081
+
+kafka:
+  topic:
+    partner-events: partner-events
+
 spring:
   application:
     name: product-service
@@ -9,3 +14,12 @@ spring:
     url: jdbc:postgresql://localhost:5433/product-service-db
     username: test
     password: test
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 3
+      acks: all
+      properties:
+        spring.json.add.type.headers: false
