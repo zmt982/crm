@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../book-store" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../currencyExchange" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../demo1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../exchange" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../flights_and_forecast" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../game-recommender-ai" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../hangman" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../horoscope-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../javaguru" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../learning-platform" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../lessons-mentor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../reminder/reminder" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../reminderMav" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../simulation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../taska-backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../tel_aviv" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../tic-tac-toe" vcs="Git" />
+  </component>
+</project>
