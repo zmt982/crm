@@ -1,1 +1,2 @@
 ru.crm.common_lib.exception.CommonLibExceptionAutoConfiguration
+ru.crm.common_lib.config.WebConfig
