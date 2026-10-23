@@ -23,6 +23,35 @@ services:
     volumes:
       - outer-service-db-data:/var/lib/postgresql/data
 
+  postgres-kc:
+    image: postgres:16-alpine
+    container_name: keycloak-db
+    environment:
+      POSTGRES_DB: keycloak-db
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    restart: always
+    volumes:
+      - keycloak-db-data:/var/lib/postgresql/data
+
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres-kc:5432/keycloak-db
+      KC_DB_USERNAME: test
+      KC_DB_PASSWORD: test
+      KC_HTTP_ENABLED: true
+    ports:
+      - 8080:8080
+      - 9000:9000
+    depends_on:
+      - postgres-kc
+
   kafka:
     image: confluentinc/cp-kafka:7.5.0
     container_name: kafka
@@ -48,4 +77,5 @@ services:
 volumes:
   product-service-db-data:
   outer-service-db-data:
+  keycloak-db-data:
   kafka-data:
