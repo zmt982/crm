@@ -1,0 +1,35 @@
+server:
+  port: 8081
+
+kafka:
+  topic:
+    partner-events: partner-events
+
+spring:
+  application:
+    name: product-service
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5433/product-service-db
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 3
+      acks: all
+      properties:
+        spring.json.add.type.headers: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/crm-realm
+
+keycloak:
+  client-id: product-service-client
+  client-secret: ${KEYCLOAK_CLIENT_SECRET}
+  token-uri: http://localhost:8080/realms/crm-realm/protocol/openid-connect/token
