@@ -4,9 +4,12 @@ logs/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+node_modules/
+.angular/
+/dist/
 
 ### IntelliJ IDEA ###
-../.idea
+.idea
 *.iws
 *.iml
 *.ipr
