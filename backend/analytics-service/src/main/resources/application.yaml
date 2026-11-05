@@ -3,7 +3,7 @@ server:
 
 kafka:
   topic:
-    analytics-events: analytics-events
+    analytic-events: analytic-events
 
 spring:
   application:
@@ -11,7 +11,7 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/changelog-analytics.xml
   datasource:
-    url: jdbc:postgresql://localhost:5435/analytics-service-db
+    url: jdbc:postgresql://localhost:5435/analytic-service-db
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   jpa:

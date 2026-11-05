@@ -1,0 +1,15 @@
+package ru.crm.analyticsservice.service;
+
+import ru.crm.analyticsservice.dto.AnalyticDto;
+import ru.crm.common_lib.dto.event.SendToAnalyticsEvent;
+
+import java.time.Instant;
+import java.util.List;
+
+public interface AnalyticService {
+
+    List<AnalyticDto> getAnalytics(Instant start, Instant end);
+
+    void handle(SendToAnalyticsEvent event);
+
+}

@@ -25,9 +25,9 @@ services:
 
   analytics-service-db:
     image: postgres:16
-    container_name: analytics-service-db
+    container_name: analytic-service-db
     environment:
-      POSTGRES_DB: analytics-service-db
+      POSTGRES_DB: analytic-service-db
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:

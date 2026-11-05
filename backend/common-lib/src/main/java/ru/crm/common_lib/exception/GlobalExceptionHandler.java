@@ -38,8 +38,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
-    @ExceptionHandler(PartnerUnavailableException.class)
-    public ResponseEntity<String> handlePartnerUnavailableException(PartnerUnavailableException e) {
+    @ExceptionHandler(KafkaUnavailableException.class)
+    public ResponseEntity<String> handlePartnerUnavailableException(KafkaUnavailableException e) {
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(e.getMessage());
     }
 

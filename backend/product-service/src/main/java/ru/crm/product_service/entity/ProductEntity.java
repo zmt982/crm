@@ -16,6 +16,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.crm.product_service.dto.Status;
 
 import java.math.BigDecimal;
 
@@ -49,4 +50,8 @@ public class ProductEntity {
 
     @Column
     private String description;
+
+    @Column
+    @NotNull
+    Status status = Status.PENDING;
 }
