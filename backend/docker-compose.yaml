@@ -23,6 +23,18 @@ services:
     volumes:
       - outer-service-db-data:/var/lib/postgresql/data
 
+  analytics-service-db:
+    image: postgres:16
+    container_name: analytics-service-db
+    environment:
+      POSTGRES_DB: analytics-service-db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5435:5432"
+    volumes:
+      - analytics-service-db-data:/var/lib/postgresql/data
+
   postgres-kc:
     image: postgres:16-alpine
     container_name: keycloak-db
