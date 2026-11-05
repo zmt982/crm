@@ -1,4 +1,4 @@
-package ru.crm.analyticsservice.controller;
+package ru.crm.analyticservice.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.crm.analyticsservice.dto.AnalyticDto;
-import ru.crm.analyticsservice.service.AnalyticService;
+import ru.crm.analyticservice.dto.AnalyticDto;
+import ru.crm.analyticservice.service.AnalyticService;
 
 import java.time.Instant;
 import java.util.List;

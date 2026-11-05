@@ -1,4 +1,4 @@
-package ru.crm.analyticsservice.entity;
+package ru.crm.analyticservice.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

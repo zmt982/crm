@@ -1,8 +1,8 @@
-package ru.crm.analyticsservice.mapper;
+package ru.crm.analyticservice.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.crm.analyticsservice.dto.AnalyticDto;
-import ru.crm.analyticsservice.entity.AnalyticEntity;
+import ru.crm.analyticservice.dto.AnalyticDto;
+import ru.crm.analyticservice.entity.AnalyticEntity;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,6 +1,6 @@
-package ru.crm.analyticsservice.service;
+package ru.crm.analyticservice.service;
 
-import ru.crm.analyticsservice.dto.AnalyticDto;
+import ru.crm.analyticservice.dto.AnalyticDto;
 import ru.crm.common_lib.dto.event.SendToAnalyticsEvent;
 
 import java.time.Instant;

@@ -7,9 +7,9 @@ kafka:
 
 spring:
   application:
-    name: analytics-service
+    name: analytic-service
   liquibase:
-    change-log: classpath:/db/changelog/changelog-analytics.xml
+    change-log: classpath:db/changelog/changelog-analytic.xml
   datasource:
     url: jdbc:postgresql://localhost:5435/analytic-service-db
     username: ${DB_USER}
@@ -21,7 +21,7 @@ spring:
   kafka:
     bootstrap-servers: localhost:29092
     consumer:
-      group-id: analytics-service
+      group-id: analytic-service
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer

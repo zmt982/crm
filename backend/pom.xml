@@ -18,7 +18,7 @@
         <module>common-lib</module>
         <module>outer-service</module>
         <module>product-service</module>
-        <module>analytics-service</module>
+        <module>analytic-service</module>
     </modules>
 
     <properties>

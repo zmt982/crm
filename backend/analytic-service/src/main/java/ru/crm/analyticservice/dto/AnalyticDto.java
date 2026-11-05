@@ -1,4 +1,4 @@
-package ru.crm.analyticsservice.dto;
+package ru.crm.analyticservice.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

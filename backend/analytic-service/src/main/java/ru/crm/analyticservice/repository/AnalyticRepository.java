@@ -1,8 +1,8 @@
-package ru.crm.analyticsservice.repository;
+package ru.crm.analyticservice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.crm.analyticsservice.entity.AnalyticEntity;
+import ru.crm.analyticservice.entity.AnalyticEntity;
 
 import java.time.Instant;
 import java.util.List;

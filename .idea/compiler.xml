@@ -14,9 +14,10 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
-        <module name="analytics-service" />
         <module name="product-service" />
+        <module name="analytic-service" />
         <module name="common-lib" />
         <module name="outer-service" />
       </profile>
@@ -27,7 +28,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="analytics-service" options="-parameters -parameters" />
+      <module name="analytic-service" options="-parameters -parameters" />
       <module name="common-lib" options="-parameters -parameters" />
       <module name="crm-backend" options="" />
       <module name="outer-service" options="-parameters -parameters" />

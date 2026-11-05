@@ -1,10 +1,10 @@
-package ru.crm.analyticsservice.kafka;
+package ru.crm.analyticservice.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import ru.crm.analyticsservice.service.AnalyticService;
+import ru.crm.analyticservice.service.AnalyticService;
 import ru.crm.common_lib.dto.event.SendToAnalyticsEvent;
 
 @Slf4j
@@ -14,7 +14,7 @@ public class AnalyticEventListener {
 
     private final AnalyticService analyticService;
 
-    @KafkaListener(topics = "analytic-events", groupId = "analytic-service")
+    @KafkaListener(topics = "${kafka.topic.analytic-events}", groupId = "analytic-service")
     public void handle(SendToAnalyticsEvent event) {
         log.info("Received event: eventId={}, productId={}", event.eventId(), event.productId());
         try {

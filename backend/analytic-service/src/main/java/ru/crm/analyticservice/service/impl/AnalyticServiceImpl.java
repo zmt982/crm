@@ -1,13 +1,13 @@
-package ru.crm.analyticsservice.service.impl;
+package ru.crm.analyticservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.crm.analyticsservice.dto.AnalyticDto;
-import ru.crm.analyticsservice.entity.AnalyticEntity;
-import ru.crm.analyticsservice.mapper.AnalyticMapper;
-import ru.crm.analyticsservice.repository.AnalyticRepository;
-import ru.crm.analyticsservice.service.AnalyticService;
+import ru.crm.analyticservice.dto.AnalyticDto;
+import ru.crm.analyticservice.entity.AnalyticEntity;
+import ru.crm.analyticservice.mapper.AnalyticMapper;
+import ru.crm.analyticservice.repository.AnalyticRepository;
+import ru.crm.analyticservice.service.AnalyticService;
 import ru.crm.common_lib.dto.event.SendToAnalyticsEvent;
 
 import java.time.Instant;
