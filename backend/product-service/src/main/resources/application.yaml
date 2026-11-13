@@ -4,6 +4,7 @@ server:
 kafka:
   topic:
     partner-events: partner-events
+    analytic-events: analytic-events
 
 spring:
   application:

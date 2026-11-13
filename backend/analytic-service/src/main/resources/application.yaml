@@ -1,0 +1,30 @@
+server:
+  port: 8083
+
+kafka:
+  topic:
+    analytic-events: analytic-events
+
+spring:
+  application:
+    name: analytic-service
+  liquibase:
+    change-log: classpath:db/changelog/changelog-analytic.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5435/analytic-service-db
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: analytic-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: ru.crm.common_lib.dto.event.SendToPartnerEvent

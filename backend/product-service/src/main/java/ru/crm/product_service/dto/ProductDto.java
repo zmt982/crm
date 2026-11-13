@@ -13,7 +13,7 @@ public record ProductDto(
         Long id,
 
         @NotBlank
-        @Size(max = 50)
+        @Size(max = 100)
         String name,
 
         @NotNull @Positive
