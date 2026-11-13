@@ -2,6 +2,7 @@ package ru.crm.product_service.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import ru.crm.product_service.dto.Status;
 import ru.crm.common_lib.dto.event.SendToPartnerEvent;
 import ru.crm.product_service.entity.ProductEntity;
 import ru.crm.common_lib.exception.InsufficientQuantityException;
-import ru.crm.common_lib.exception.PartnerUnavailableException;
+import ru.crm.common_lib.exception.KafkaUnavailableException;
 import ru.crm.product_service.mapper.ProductMapper;
 import ru.crm.product_service.repository.ProductRepository;
 import ru.crm.product_service.service.ProductService;
@@ -21,6 +22,7 @@ import ru.crm.product_service.service.ProductService;
 import java.time.Instant;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -30,10 +32,13 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper productMapper;
 
-    private final KafkaTemplate<String, SendToPartnerEvent> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Value("${kafka.topic.partner-events}")
     private String partnerTopic;
+
+    @Value("${kafka.topic.analytic-events}")
+    private String analyticTopic;
 
     private static final String PRODUCT_NOT_FOUND = "Product not found: ";
 
@@ -99,8 +104,11 @@ public class ProductServiceImpl implements ProductService {
         try {
             kafkaTemplate.send(partnerTopic, productEntity.getId().toString(), event)
                     .get();
+            kafkaTemplate.send(analyticTopic, productEntity.getId().toString(), event)
+                    .get();
         } catch (Exception e) {
-            throw new PartnerUnavailableException("Kafka unavailable", e);
+            log.error("Кафка недоступна. EventId {}, productId {} не отправлен", eventId, productEntity.getId());
+            throw new KafkaUnavailableException("Kafka unavailable", e);
         }
 
         return new SendToPartnerResponseDto(

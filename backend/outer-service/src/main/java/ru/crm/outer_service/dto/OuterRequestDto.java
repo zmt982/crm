@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public record OuterRequestDto (
 
     @NotBlank
-    @Size(max = 50)
+    @Size(max = 100)
     String name,
 
     @NotNull

@@ -18,7 +18,7 @@ public record SendToPartnerEvent(
         Long productId,
 
         @NotBlank
-        @Size(max = 50)
+        @Size(max = 100)
         String name,
 
         @NotNull

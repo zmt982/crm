@@ -16,12 +16,12 @@ public class PartnerEventListener {
 
     @KafkaListener(topics = "${kafka.topic.partner-events}", groupId = "outer-service")
     public void handle(SendToPartnerEvent event) {
-        log.info("Received event: eventId={}, productId={}", event.eventId(), event.productId());
+        log.info("Received partner event: eventId={}, productId={}", event.eventId(), event.productId());
         try {
             outerService.handle(event);
-            log.info("Event processed: eventId={}", event.eventId());
+            log.info("Partner event processed: eventId={}", event.eventId());
         } catch (Exception e) {
-            log.error("Failed to handle event: eventId={}", event.eventId(), e);
+            log.error("Failed to handle partner event: eventId={}", event.eventId(), e);
             throw e;
         }
     }

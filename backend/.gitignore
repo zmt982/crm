@@ -1,17 +1,23 @@
+# === Java / Maven ===
 target/
 logs/
-.docker/
+out/
+build/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### IntelliJ IDEA ###
-../.idea
+# === IntelliJ IDEA / IDE ===
+.idea/
+**/.idea/
 *.iws
 *.iml
 *.ipr
 
-### Eclipse ###
+# === VS Code ===
+.vscode/
+
+# === Eclipse ===
 .apt_generated
 .classpath
 .factorypath
@@ -20,27 +26,21 @@ logs/
 .springBeans
 .sts4-cache
 
-### NetBeans ###
+# === NetBeans ===
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
-
-### Environment ###
+# === Environment (Секреты) ===
 .env
 *.env
 .env.*
 !.env.docker.example
 
-# Локальные учётные данные Liquibase (не коммитить)
-**/liquibase.properties
+# === OS ===
+.DS_Store
+Thumbs.db
