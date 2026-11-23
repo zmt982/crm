@@ -60,7 +60,6 @@ services:
       KC_HTTP_ENABLED: true
     ports:
       - 8080:8080
-      - 9000:9000
     depends_on:
       - postgres-kc
 
@@ -86,9 +85,49 @@ services:
     volumes:
       - kafka-data:/var/lib/kafka/data
 
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: crm-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - crm-network
+
+  minio-init:
+    image: quay.io/minio/mc:latest
+    container_name: crm-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set local http://minio:9000 ${MINIO_ROOT_USER:-minioadmin} ${MINIO_ROOT_PASSWORD:-minioadmin};
+      /usr/bin/mc mb --ignore-existing local/reports-bucket;
+      exit 0;
+      "
+    networks:
+      - crm-network
+
 volumes:
   product-service-db-data:
   outer-service-db-data:
   analytic-service-db-data:
   keycloak-db-data:
   kafka-data:
+  minio_data:
+
+networks:
+  crm-network:
+    driver: bridge

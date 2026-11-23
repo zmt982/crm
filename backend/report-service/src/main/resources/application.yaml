@@ -1,0 +1,20 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: report-service
+
+s3:
+  endpoint: ${S3_ENDPOINT}
+  access-key: ${S3_ACCESS}
+  secret-key: ${S3_SECRET_KEY}
+  bucket: ${S3_BUCKET}
+
+report-scheduler:
+  enabled: ${ENABLED}
+  initial-delay-seconds: ${INITIAL_DELAY_SECONDS}
+  cron: ${CRON}
+
+product-service:
+  url: ${PRODUCT_SERVICE_URL}

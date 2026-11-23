@@ -1,5 +1,6 @@
 package ru.crm.product_service.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,17 +14,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.crm.product_service.dto.ProductDto;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
+import ru.crm.common_lib.dto.ProductDto;
 import ru.crm.product_service.dto.SendToPartnerRequestDto;
 import ru.crm.product_service.dto.SendToPartnerResponseDto;
+import ru.crm.product_service.repository.ProductStreamRepository;
 import ru.crm.product_service.service.ProductService;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v2/products")
 @RequiredArgsConstructor
-public class ProductControllerV1 {
+public class ProductControllerV2 {
 
     private final ProductService productService;
+    private final ProductStreamRepository productStreamRepository;
+    private final ObjectMapper objectMapper;
 
     @PostMapping
     public ResponseEntity<ProductDto> create(@Valid @RequestBody ProductDto productDto) {
@@ -53,6 +61,21 @@ public class ProductControllerV1 {
                                                                   @Valid @RequestBody SendToPartnerRequestDto requestDto) {
         SendToPartnerResponseDto sendToPartnerResponseDto = productService.sendToPartner(id, requestDto);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(sendToPartnerResponseDto);
+    }
+
+    @PostMapping("/stream")
+    public StreamingResponseBody getStream() {
+        return outputStream -> {
+            productStreamRepository.streamAll(productDto -> {
+                try {
+                    String json = objectMapper.writeValueAsString(productDto);
+                    outputStream.write((json + "\n").getBytes(StandardCharsets.UTF_8));
+                    outputStream.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        };
     }
 
 }

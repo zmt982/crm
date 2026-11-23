@@ -1,4 +1,4 @@
-package ru.crm.product_service.dto;
+package ru.crm.common_lib.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

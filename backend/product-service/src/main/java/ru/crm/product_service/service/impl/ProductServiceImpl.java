@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.crm.product_service.dto.ProductDto;
+import ru.crm.common_lib.dto.ProductDto;
 import ru.crm.product_service.dto.SendToPartnerRequestDto;
 import ru.crm.product_service.dto.SendToPartnerResponseDto;
 import ru.crm.product_service.dto.Status;
