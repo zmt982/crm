@@ -1,9 +1,21 @@
 server:
-  port: 8084
+  port: ${REPORT_SERVICE_PORT}
 
 spring:
   application:
     name: report-service
+  security:
+    oauth2:
+      client:
+        registration:
+          product-service:
+            client-id: report-service-client
+            client-secret: ${KEYCLOAK_REPORT_CLIENT_SECRET}
+            authorization-grant-type: client_credentials
+            scope: openid
+        provider:
+          product-service:
+            issuer-uri: ${ISSUER_URI}
 
 s3:
   endpoint: ${S3_ENDPOINT}
@@ -13,7 +25,6 @@ s3:
 
 report-scheduler:
   enabled: ${ENABLED}
-  initial-delay-seconds: ${INITIAL_DELAY_SECONDS}
   cron: ${CRON}
 
 product-service:

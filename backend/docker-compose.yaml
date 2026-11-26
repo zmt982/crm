@@ -57,7 +57,7 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres-kc:5432/keycloak-db
       KC_DB_USERNAME: ${DB_USER}
       KC_DB_PASSWORD: ${DB_PASSWORD}
-      KC_HTTP_ENABLED: true
+      KC_HTTP_ENABLED: trueк
     ports:
       - 8080:8080
     depends_on:
@@ -86,7 +86,7 @@ services:
       - kafka-data:/var/lib/kafka/data
 
   minio:
-    image: quay.io/minio/minio:latest
+    image: pgsty/silo:latest
     container_name: crm-minio
     command: server /data --console-address ":9001"
     environment:
@@ -106,7 +106,7 @@ services:
       - crm-network
 
   minio-init:
-    image: quay.io/minio/mc:latest
+    image: pgsty/mc:latest
     container_name: crm-minio-init
     depends_on:
       minio:
